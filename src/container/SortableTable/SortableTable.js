@@ -3,14 +3,17 @@ import React, { Component } from 'react';
 import { getAllCountries } from '../../services/country/CountryService';
 import { Table } from 'semantic-ui-react';
 import { Loader } from 'semantic-ui-react'
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import * as Constants from '../../constants';
 
 export default class SortableTable extends Component {
     state = {
         column: null,
         direction: null,
         countries: [],
-        isLoading: true
+        isLoading: true,
+        error: false,
+        selectedCountry: null,
     }
 
     componentDidMount() {
@@ -19,8 +22,16 @@ export default class SortableTable extends Component {
                 this.setState({ countries: result, isLoading: false })
             })
             .catch(error => {
-                console.log(error);
+                this.setState({ error: true, isLoading: false })
+                console.log('Error while fetching data from api: ' + error);
             })
+    }
+
+    handleCountryClick = (clickedRow) => () => {
+        const { selectedCountry } = this.state
+
+        this.setState({ selectedCountry: clickedRow })
+        console.log('Selected country ' + clickedRow)
     }
 
     handleSort = (clickedColumn) => () => {
@@ -45,12 +56,16 @@ export default class SortableTable extends Component {
         const { column, countries, direction } = this.state
         const formatter = new Intl.NumberFormat('en');
 
-        let home = null;
+        let content = null;
+
         if (this.state.isLoading) {
-            home = <div style={{ marginTop: '30px' }}><Loader active inline='centered' /><p>Loading</p></div>
+            content = <div style={{ marginTop: '30px' }}><Loader active inline='centered' /><p>Loading</p></div>
+        }
+        if (this.state.error) {
+            content = <div style={{ marginTop: '30px' }}><p>Error while fetching data...</p></div>
         }
         else {
-            home = (
+            content = (
                 <Table sortable selectable stackable unstackable striped>
                     <Table.Header>
                         <Table.Row>
@@ -75,7 +90,8 @@ export default class SortableTable extends Component {
                         {
                             countries.map(country => {
                                 return (
-                                    <Table.Row key={country.name} onClick={() => alert('You clicked ' + country.name)}>
+                                    // <Table.Row key={country.name} onClick={this.handleCountryClick(country.name)}>
+                                    <Table.Row key={country.name} onClick={this.handleCountryClick(country.name)}>
                                         <Table.Cell>{country.name}</Table.Cell>
                                         <Table.Cell>{formatter.format(country.population)}</Table.Cell>
                                         <Table.Cell><img src={country.flag} alt="country_flag" width="70px" height="50px" /></Table.Cell>
@@ -89,9 +105,11 @@ export default class SortableTable extends Component {
         }
 
         return (
-            <div>
-                {home}
-            </div>
+            <Router>
+                <div>
+                    {content}
+                </div>
+            </Router>
         )
     }
 }

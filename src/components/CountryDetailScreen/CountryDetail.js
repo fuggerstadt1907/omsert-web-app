@@ -2,7 +2,7 @@ import React from 'react';
 
 const countryDetail = (props) => {
     return (
-        <div><h1>Country Detail Page!</h1></div>
+        <div><h1>Country Details</h1></div>
     );
 }
 

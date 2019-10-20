@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { getAllCountries } from '../../services/country/CountryService';
 import { Table } from 'semantic-ui-react';
 import { Loader } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import * as Constants from '../../constants';
+import { Link } from 'react-router-dom';
 
 export default class SortableTable extends Component {
     state = {
@@ -90,9 +89,12 @@ export default class SortableTable extends Component {
                         {
                             countries.map(country => {
                                 return (
-                                    // <Table.Row key={country.name} onClick={this.handleCountryClick(country.name)}>
                                     <Table.Row key={country.name} onClick={this.handleCountryClick(country.name)}>
-                                        <Table.Cell>{country.name}</Table.Cell>
+                                        <Table.Cell>
+                                            <Link to={'/name/' + country.name} style={{ color: 'black' }}>
+                                                {country.name}
+                                            </Link>
+                                        </Table.Cell>
                                         <Table.Cell>{formatter.format(country.population)}</Table.Cell>
                                         <Table.Cell><img src={country.flag} alt="country_flag" width="70px" height="50px" /></Table.Cell>
                                     </Table.Row>
@@ -105,11 +107,9 @@ export default class SortableTable extends Component {
         }
 
         return (
-            <Router>
-                <div>
-                    {content}
-                </div>
-            </Router>
+            <div>
+                {content}
+            </div>
         )
     }
 }

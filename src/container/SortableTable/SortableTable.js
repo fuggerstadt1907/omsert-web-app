@@ -27,8 +27,6 @@ export default class SortableTable extends Component {
     }
 
     handleCountryClick = (clickedRow) => () => {
-        const { selectedCountry } = this.state
-
         this.setState({ selectedCountry: clickedRow })
         console.log('Selected country ' + clickedRow)
     }
@@ -91,7 +89,12 @@ export default class SortableTable extends Component {
                                 return (
                                     <Table.Row key={country.name} onClick={this.handleCountryClick(country.name)}>
                                         <Table.Cell>
-                                            <Link to={'/name/' + country.name} style={{ color: 'black' }}>
+                                            <Link
+                                                to={{
+                                                    pathname: '/name/' + country.name,
+                                                }}
+                                                style={{ color: 'black' }}
+                                            >
                                                 {country.name}
                                             </Link>
                                         </Table.Cell>

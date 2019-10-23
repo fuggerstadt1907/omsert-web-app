@@ -41,3 +41,5 @@ Summary....
 
 * `create-react-app` is a global command-line utility that you use to create new projects.
 * `react-scripts` is a development dependency in the generated projects (including this one).
+
+![alt text](https://github.com/fuggerstadt1907/omsert-web-app/blob/master/src/assets/sketch.png)

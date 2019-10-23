@@ -57,6 +57,7 @@ Non-functional requirements
 * Caching API responses. I don't expect often changes. Maybe hold API response for one week then replace it with a new .json file
 * Implement better Error handling
 * Better looking fullresponsive Design
+* Copy Page URL to clipboard, share link via social links
 
 
 ## Choice of 3rd Party Frameworks/Libraries
@@ -65,7 +66,8 @@ The following Frameworks/Libraries are used in this project
 
 * `axios` is a popular, promise-based HTTP client that sports an easy-to-use API and can be used in both the browser and Node.js.
 * `react-router` is used for indexing the Country Detail Pages and Routing beetwewen the Views.
-* `semantic-ui` is a popular UI Framework which is used for the Detailscreen (Loader, Button, Modal, Icon, Input, Table)
+* `semantic-ui` is a popular UI Framework which is used for the Detailscreen (Loader, Button, Modal, Icon, Input, Table).
+* `Google Maps` is used to present a selected Country with a Marker on Google Maps.
 
 
 ## Sketch

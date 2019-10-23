@@ -50,17 +50,16 @@ export default class SortableTable extends Component {
     }
 
     render() {
-        const { column, countries, direction } = this.state
+        const { column, countries, direction, error, isLoading } = this.state
+        let content = null;
         const formatter = new Intl.NumberFormat('en');
         const filteredCountries = countries.filter((country) => {
             return country.name.toLowerCase().includes(this.state.searchValue.toLowerCase());
         });
 
-        let content = null;
-
-        if (this.state.isLoading) {
+        if (isLoading) {
             content = <div style={{ marginTop: '30px' }}><Loader active inline='centered' /><p>Loading</p></div>
-        } else if (this.state.error) {
+        } else if (error) {
             content = <div style={{ marginTop: '30px' }}><Icon name='warning sign' />Error while fetching data...</div>
         }
         else {

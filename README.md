@@ -18,6 +18,8 @@ web app and help us make our friends happy!
 - [What was particularly challenging for me during implementation](#What-was-particularly-challenging-for-me-during-implementation)
 - [Optimization potential within the application](#Optimization-potential-within-the-application)
 - [Choice of 3rd Party Frameworks/Libraries](#Choice-of-3rd-Party-Frameworks/Libraries)
+- [Sketch](#Sketch)
+
 
 ## What was particularly challenging for me during implementation
 
@@ -41,5 +43,8 @@ Summary....
 
 * `create-react-app` is a global command-line utility that you use to create new projects.
 * `react-scripts` is a development dependency in the generated projects (including this one).
+
+
+## Sketch
 
 ![alt text](https://github.com/fuggerstadt1907/omsert-web-app/blob/master/src/assets/sketch.png)

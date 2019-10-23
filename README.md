@@ -47,26 +47,25 @@ Non-functional requirements
 
 ## What was particularly challenging for me during implementation
 
-Summary....
-
-* `create-react-app` is a global command-line utility that you use to create new projects.
-* `react-scripts` is a development dependency in the generated projects (including this one).
-
+* Figure out HOW TO START this WebApp
+* Setting dynamical the zoom level of each country
+* Decide to use plain JS (e.g. Google Maps Part) or out of the box finished ReactJS Libraries
 
 ## Optimization potential within the application
 
-Summary....
-
-* `create-react-app` is a global command-line utility that you use to create new projects.
-* `react-scripts` is a development dependency in the generated projects (including this one).
+* Client performance e.g. size of websize data (Image resolution)
+* Caching API responses. I don't expect often changes. Maybe hold API response for one week then replace it with a new .json file
+* Implement better Error handling
+* Better looking fullresponsive Design
 
 
 ## Choice of 3rd Party Frameworks/Libraries
 
-Summary....
+The following Frameworks/Libraries are used in this project
 
-* `create-react-app` is a global command-line utility that you use to create new projects.
-* `react-scripts` is a development dependency in the generated projects (including this one).
+* `axios` is a popular, promise-based HTTP client that sports an easy-to-use API and can be used in both the browser and Node.js.
+* `react-router` is used for indexing the Country Detail Pages and Routing beetwewen the Views.
+* `semantic-ui` is a popular UI Framework which is used for the Detailscreen (Loader, Button, Modal, Icon, Input, Table)
 
 
 ## Sketch

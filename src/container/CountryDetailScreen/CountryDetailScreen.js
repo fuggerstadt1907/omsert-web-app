@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getCountryByName } from '../../services/country/CountryService';
 import { Loader, Button, Modal } from 'semantic-ui-react';
-import { Item } from 'semantic-ui-react'
+import { Message, Item } from 'semantic-ui-react'
 
 
 class countryDetail extends Component {
@@ -9,7 +9,21 @@ class countryDetail extends Component {
     state = {
         country: this.props.match.params.name,
         fetchedCountry: null,
-        open: false
+        open: false,
+        successMsgHidden: true
+    }
+
+    toggleSuccessMessage = (state) => {
+        if (state === true) {
+            this.setState({ successMsgHidden: true })
+        }
+        else {
+            this.setState({ successMsgHidden: false })
+        }
+    }
+
+    test = () => {
+
     }
 
     show = (size) => () => this.setState({ size, open: true })
@@ -20,7 +34,10 @@ class countryDetail extends Component {
         navigator.clipboard.writeText(copiedText)
             .then(() => {
                 console.log('Async: Copying to clipboard was successful!');
-                this.close()
+                // this.setState({ successMsgHidden: false })
+                this.toggleSuccessMessage(false)
+                this.close();
+                setTimeout(() => { this.toggleSuccessMessage(true) }, 2000);
             }, function (err) {
                 console.error('Async: Could not copy text: ', err);
             });
@@ -67,6 +84,12 @@ class countryDetail extends Component {
         else {
             content = (
                 <div>
+                    <Message
+                        color="green"
+                        hidden={this.state.successMsgHidden}
+                    >
+                        URL copied to clipboard!
+                    </Message>
                     <Item style={{ padding: '25px' }}>
                         <Item.Content>
                             <Item.Header style={{ fontSize: '30px', lineHeight: '30px' }}>{fetchedCountry.name}</Item.Header>
@@ -88,25 +111,30 @@ class countryDetail extends Component {
                         icon='fork'
                         label={{ as: 'a', basic: true, content: 'Share this Page' }}
                         labelPosition='left'
-                        style={{ margin: '10px 0px 20px 0px' }}
+                        style={{ margin: '10px 0px 20px 0px', }}
                         size='tiny'
                         primary
-                        onClick={this.show('tiny')}
+                        onClick={this.show(open)}
                     />
 
-                    <Modal size={size} open={open} onClose={this.close}>
-                        <Modal.Header>Share Country</Modal.Header>
-                        <Modal.Content>
+                    <Modal
+                        open={open}
+                        onClose={this.close}
+
+                    >
+                        <Modal.Header style={{ fontFamily: 'Asap' }}>Share Country</Modal.Header>
+                        <Modal.Content style={{ fontFamily: 'Asap' }}>
                             <p>{modalText}</p>
                         </Modal.Content>
-                        <Modal.Actions>
+                        <Modal.Actions >
                             <Button
-
+                                style={{ fontFamily: 'Asap' }}
                                 onClick={this.close}
                             >
                                 Close</Button>
                             <Button
                                 positive
+                                style={{ fontFamily: 'Asap' }}
                                 icon='checkmark'
                                 labelPosition='right'
                                 content='Copy to clipboard'

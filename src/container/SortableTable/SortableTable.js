@@ -70,7 +70,7 @@ export default class SortableTable extends Component {
                         icon='search'
                         placeholder='Search...'
                         loading={this.state.searchLoading}
-                        style={{ margin: '10px', width: '70%', borderRadius: '20px', padding: '5px' }}
+                        style={{ fontFamily: 'Asap', margin: '10px', width: '70%', borderRadius: '20px', padding: '5px' }}
                         onChange={this.searchHandler.bind(this)}
                     />
 

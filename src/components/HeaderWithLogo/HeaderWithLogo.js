@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../assets/logo-white.svg';
-import '../App/App.css';
+import '../App/App.css'
 
 const headerWithLogo = (props) => {
     return (

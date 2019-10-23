@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import HeaderWithLogo from '../HeaderWithLogo/HeaderWithLogo';
 import SortableTable from '../../container/SortableTable/SortableTable';
-import CountryDetailScreen from '../CountryDetailScreen/CountryDetailScreen';
+import CountryDetailScreen from '../../container/CountryDetailScreen/CountryDetailScreen';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as Constants from '../../constants';
 

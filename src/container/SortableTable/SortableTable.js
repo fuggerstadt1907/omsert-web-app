@@ -1,8 +1,11 @@
 import _ from 'lodash';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { getAllCountries } from '../../services/country/CountryService';
 import { Link } from 'react-router-dom';
 import { Icon, Input, Loader, Table } from 'semantic-ui-react'
+import * as Constants from '../../constants';
+import ErrorComponent from '../../components/ContentPlaceholder/ErrorComponent';
+import LoadingComponent from '../../components/ContentPlaceholder/LoadingComponent';
 
 export default class SortableTable extends Component {
     state = {
@@ -19,11 +22,10 @@ export default class SortableTable extends Component {
     componentDidMount() {
         getAllCountries()
             .then(result => {
-                this.setState({ countries: result, isLoading: false })
+                this.setState({ countries: result, isLoading: false, error: false })
             })
             .catch(error => {
                 this.setState({ error: true, isLoading: false })
-                console.log('Error while fetching data from api: ' + error);
             })
     }
 
@@ -50,26 +52,27 @@ export default class SortableTable extends Component {
     }
 
     render() {
-        const { column, countries, direction, error, isLoading } = this.state
         let content = null;
-        const formatter = new Intl.NumberFormat('en');
+        const { column, countries, direction, error, isLoading } = this.state
         const filteredCountries = countries.filter((country) => {
             return country.name.toLowerCase().includes(this.state.searchValue.toLowerCase());
         });
 
         if (isLoading) {
-            content = <div style={{ marginTop: '30px' }}><Loader active inline='centered' /><p>Loading</p></div>
+            // content = <ContentPlaceholder><Loader active inline='centered' />Loading</ContentPlaceholder>
+            content = <LoadingComponent />
         } else if (error) {
-            content = <div style={{ marginTop: '30px' }}><Icon name='warning sign' />Error while fetching data...</div>
+            // content = <ContentPlaceholder><Icon name='warning sign' />Error while fetching data...</ContentPlaceholder>
+            content = <ErrorComponent />
         }
         else {
             content = (
-                <div>
+                <Fragment>
                     <Input
                         icon='search'
                         placeholder='Search...'
                         loading={this.state.searchLoading}
-                        style={{ fontFamily: 'Asap', margin: '10px', width: '70%', borderRadius: '20px', padding: '5px' }}
+                        style={{ fontFamily: 'Asap', margin: '10px', width: '70%', borderRadius: '20px', padding: '5px', fontSize: '16px' }}
                         onChange={this.searchHandler.bind(this)}
                     />
 
@@ -81,16 +84,16 @@ export default class SortableTable extends Component {
                                     onClick={this.handleSort('name')}
                                 >
                                     Name
-                        </Table.HeaderCell>
+                                </Table.HeaderCell>
                                 <Table.HeaderCell
                                     sorted={column === 'population' ? direction : null}
                                     onClick={this.handleSort('population')}
                                 >
                                     Population
-                        </Table.HeaderCell>
+                                </Table.HeaderCell>
                                 <Table.HeaderCell>
                                     Flag
-                        </Table.HeaderCell>
+                                </Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
@@ -98,47 +101,28 @@ export default class SortableTable extends Component {
                                 filteredCountries.map(country => {
                                     return (
                                         <Table.Row key={country.name}>
-
                                             <Table.Cell>
-                                                <Link
-                                                    to={{
-                                                        pathname: '/name/' + country.name,
-                                                    }}
-                                                    style={{ color: 'black' }}
-                                                >
+                                                <Link to={{ pathname: '/name/' + country.name, }} style={{ color: 'black' }} >
                                                     {country.name}
                                                 </Link>
                                             </Table.Cell>
-
                                             <Table.Cell>
-                                                <Link
-                                                    to={{
-                                                        pathname: '/name/' + country.name,
-                                                    }}
-                                                    style={{ color: 'black' }}
-                                                >
-                                                    {formatter.format(country.population)}
+                                                <Link to={{ pathname: '/name/' + country.name, }} style={{ color: 'black' }} >
+                                                    {Constants.populationFormatter.format(country.population)}
                                                 </Link>
                                             </Table.Cell>
-
                                             <Table.Cell>
-                                                <Link
-                                                    to={{
-                                                        pathname: '/name/' + country.name,
-                                                    }}
-
-                                                >
+                                                <Link to={{ pathname: '/name/' + country.name, }} style={{ color: 'black' }} >
                                                     <img src={country.flag} alt="country_flag" width="70px" height="50px" />
                                                 </Link>
                                             </Table.Cell>
-
                                         </Table.Row>
                                     )
                                 })
                             }
                         </Table.Body>
                     </Table>
-                </div>
+                </Fragment>
             )
         }
 

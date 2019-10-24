@@ -6,6 +6,7 @@ import LinkCountry from './LinkCountry/LinkCountry';
 const table = (props) => {
     return (
         <Table sortable stackable unstackable striped>
+
             <Table.Header>
                 <Table.Row>
 

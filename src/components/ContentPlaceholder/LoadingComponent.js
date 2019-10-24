@@ -3,7 +3,7 @@ import { Loader } from 'semantic-ui-react'
 
 const loadingComponent = () => {
     return (
-        <div style={{ marginTop: '30px' }}><Loader active inline='centered' />Loading</div>
+        <div style={{ marginTop: '30px' }}><Loader active inline='centered' />Loading...</div>
     );
 }
 

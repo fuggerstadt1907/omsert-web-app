@@ -79,9 +79,9 @@ export default class SortableTable extends Component {
         }
 
         return (
-            <div>
+            <Fragment>
                 {content}
-            </div>
+            </Fragment>
         )
     }
 }

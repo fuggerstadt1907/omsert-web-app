@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../assets/logo-white.svg';
 import '../App/App.css'
 
-const headerWithLogo = (props) => {
+const headerWithLogo = () => {
     return (
         <header className="App-header">
             <a href="/"><img src={logo} className="App-logo" alt="logo" /></a>

@@ -75,9 +75,9 @@ class countryDetail extends Component {
             )
         }
         return (
-            <div>
+            <Fragment>
                 {content}
-            </div >
+            </Fragment >
         );
     }
 }

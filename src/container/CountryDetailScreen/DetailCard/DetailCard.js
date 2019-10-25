@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Image } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+
 
 const detailCard = (props) => {
     return (
@@ -45,5 +47,16 @@ const detailCard = (props) => {
         </Card>
     );
 }
+
+detailCard.propTypes = {
+    alpha3Code: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string,
+    name: PropTypes.string,
+    region: PropTypes.string,
+    currency: PropTypes.string,
+    symbol: PropTypes.string,
+    timezone: PropTypes.string,
+    openShare: PropTypes.func
+};
 
 export default detailCard;

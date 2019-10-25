@@ -2,6 +2,7 @@ import * as Constants from '../../../constants';
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 import LinkCountry from './LinkCountry/LinkCountry';
+import PropTypes from 'prop-types';
 
 const table = (props) => {
     return (
@@ -54,6 +55,14 @@ const table = (props) => {
             </Table.Body>
         </Table>
     );
+}
+
+table.propTypes = {
+    sortedByName: PropTypes.bool,
+    onClickName: PropTypes.func,
+    sortedByPopulation: PropTypes.bool,
+    onClickPopulation: PropTypes.func,
+    filteredCountries: PropTypes.array.isRequired,
 }
 
 export default table;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Input, Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+
 
 const shareModal = (props) => {
     return (
@@ -23,5 +25,11 @@ const shareModal = (props) => {
         </Modal>
     );
 }
+
+shareModal.propTypes = {
+    open: PropTypes.bool,
+    close: PropTypes.func,
+    url: PropTypes.string
+};
 
 export default shareModal;

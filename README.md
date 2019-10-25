@@ -56,6 +56,7 @@ Non-functional requirements
 * Implementing `ESLint` for coding rules, error handling and more consistent code
 * Client performance e.g. size of websize data (Image resolution)
 * Caching API responses. I don't expect often changes. Maybe hold API response for one week then replace it with a new .json file
+* Implement Pagination for the Country Table
 * Implement better Error handling
 * Better looking fullresponsive Design
 * Copy Page URL to clipboard, share link via social links

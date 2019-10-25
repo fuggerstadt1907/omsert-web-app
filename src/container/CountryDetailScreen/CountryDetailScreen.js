@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { getCountryByName } from '../../services/country/CountryService';
 import ErrorComponent from '../../components/ContentPlaceholder/ErrorComponent';
 import LoadingComponent from '../../components/ContentPlaceholder/LoadingComponent';
-import DetailCard from './DetailCard/DetailCard';
-import ShareModal from './ShareModal/ShareModal';
-import Map from './Map/Map';
+import DetailCard from '../../components/CountryDetailScreen/DetailCard/DetailCard';
+import ShareModal from '../../components/CountryDetailScreen/ShareModal/ShareModal';
+import Map from '../../components/CountryDetailScreen/Map/Map';
 
 
 class countryDetail extends Component {

@@ -3,8 +3,8 @@ import React, { Component, Fragment } from 'react';
 import { getAllCountries } from '../../services/country/CountryService';
 import ErrorComponent from '../../components/ContentPlaceholder/ErrorComponent';
 import LoadingComponent from '../../components/ContentPlaceholder/LoadingComponent';
-import Search from './Search/Search';
-import Table from './Table/Table';
+import Search from '../../components/SortableTable/Search/Search';
+import Table from '../../components/SortableTable/Table/Table';
 
 export default class SortableTable extends Component {
     state = {

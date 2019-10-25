@@ -4,15 +4,13 @@ import { BACKEND_URL } from '../api';
 
 function getHeaders() {
     return {
-        accept: 'application/json',
-        // authorization: `JWT ${getStoredAuthToken()}`,
+        accept: 'application/json'
     };
 }
 
 function postHeaders() {
     return {
-        'content-type': 'application/json',
-        // authorization: `JWT ${getStoredAuthToken()}`,
+        'content-type': 'application/json'
     };
 }
 

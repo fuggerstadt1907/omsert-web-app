@@ -1,18 +1,19 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import './DetailCard.css';
 
 
 const detailCard = (props) => {
     return (
-        <Card centered key={props.alpha3Code} style={{ marginTop: '25px', width: '80%' }}>
+        <Card centered key={props.alpha3Code} style={{ marginTop: '25px', minWidth: '70%' }}>
 
-            <Image style={{ backgroundColor: 'white' }} src={props.imgSrc} />
+            <Image style={{ backgroundColor: 'white', margin: 'auto' }} src={props.imgSrc} />
 
             <Card.Content>
                 <Fragment>
-                    <Card.Header>{props.name}</Card.Header>
+                    <div className='omsert-font'><Card.Header>{props.name}</Card.Header></div>
                     <Card.Meta>Capital: {props.capital} ({props.region})</Card.Meta>
                     <Card.Description>
                         <p style={{ margin: '15px 0px 5px 0' }}><b>Currency:</b> {props.currency} ({props.symbol})</p>
@@ -29,19 +30,19 @@ const detailCard = (props) => {
             <Card.Content textAlign="center">
                 <Link to="/" style={{ color: 'black' }}>
                     <Button
-                        icon='angle double left'
-                        color="grey"
-                        label={{ basic: true, content: 'Back' }}
-                        size='medium'
-                    />
+                        size="large"
+                        style={{ fontFamily: 'Asap', backgroundColor: 'white', border: '1px solid #651FFF', color: '#651FFF' }}
+                    >
+                        <Icon name='angle double left' />Back
+                    </Button>
                 </Link>
                 <Button
-                    icon='fork'
-                    color="violet"
-                    label={{ as: 'a', basic: true, content: 'Share' }}
-                    size='medium'
+                    size="large"
+                    style={{ fontFamily: 'Asap', backgroundColor: '#651FFF', border: '1px solid #651FFF', color: 'white' }}
                     onClick={props.openShare}
-                />
+                >
+                    <Icon name='share' />Share
+                </Button>
             </Card.Content>
 
         </Card>
@@ -55,7 +56,10 @@ detailCard.propTypes = {
     region: PropTypes.string,
     currency: PropTypes.string,
     symbol: PropTypes.string,
-    timezone: PropTypes.string,
+    timezone: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.string
+    ]),
     openShare: PropTypes.func
 };
 

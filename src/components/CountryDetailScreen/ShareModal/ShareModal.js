@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input, Modal } from 'semantic-ui-react';
+import { Button, Icon, Input, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 
@@ -10,7 +10,7 @@ const shareModal = (props) => {
 
             <Modal.Content style={{ fontFamily: 'Asap' }}>
                 <p>Use this URL to share the country details with your friends.</p>
-                <Input label='URL' style={{ width: '100%' }} value={props.url} />
+                <Input style={{ width: '100%' }} value={props.url} />
             </Modal.Content>
 
             <Modal.Actions >
@@ -18,7 +18,7 @@ const shareModal = (props) => {
                     style={{ fontFamily: 'Asap', backgroundColor: '#651FFF', color: 'white' }}
                     onClick={props.close}
                 >
-                    Close
+                    <Icon name='close' />Close
                 </Button>
             </Modal.Actions>
 

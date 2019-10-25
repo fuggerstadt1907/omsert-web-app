@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { getCountryByName } from '../../services/country/CountryService';
-import ErrorComponent from '../../components/ContentPlaceholder/ErrorComponent';
-import LoadingComponent from '../../components/ContentPlaceholder/LoadingComponent';
+import ErrorComponent from '../../components/ErrorLoadingComponent/ErrorComponent';
+import LoadingComponent from '../../components/ErrorLoadingComponent/LoadingComponent';
 import DetailCard from '../../components/CountryDetailScreen/DetailCard/DetailCard';
 import ShareModal from '../../components/CountryDetailScreen/ShareModal/ShareModal';
 import Map from '../../components/CountryDetailScreen/Map/Map';

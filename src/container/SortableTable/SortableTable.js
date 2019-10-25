@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import { getAllCountries } from '../../services/country/CountryService';
-import ErrorComponent from '../../components/ContentPlaceholder/ErrorComponent';
-import LoadingComponent from '../../components/ContentPlaceholder/LoadingComponent';
+import ErrorComponent from '../../components/ErrorLoadingComponent/ErrorComponent';
+import LoadingComponent from '../../components/ErrorLoadingComponent/LoadingComponent';
 import Search from '../../components/SortableTable/Search/Search';
 import Table from '../../components/SortableTable/Table/Table';
 
